@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Type } from "src/types/type.entity";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'Rooms'})
 export class Room{
@@ -25,4 +26,7 @@ export class Room{
     @ApiProperty()
     @Column({type: 'boolean', default: true })
     isActive: boolean;
+
+    @ManyToMany(() => Type, type => type.rooms)
+    types: Type[];
 }

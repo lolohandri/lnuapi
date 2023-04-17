@@ -1,5 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Category } from "src/category/category.entity";
+import { Room } from "src/rooms/room.entity";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'Types'})
 export class Type{
@@ -10,7 +12,10 @@ export class Type{
     @Column({type: 'varchar', length: 100})
     name: string;
 
-    @ApiProperty()
-    @Column({type: 'integer'})
-    categoryId: number;
+    @ManyToOne(() => Category, category => category.types, {onDelete : 'SET NULL'})
+    category: Category;
+
+    @ManyToMany(() => Room, (room) => room.types)
+    @JoinTable()
+    rooms: Room[];
 }
