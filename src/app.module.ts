@@ -5,6 +5,7 @@ import { Room } from './rooms/room.entity';
 import { TypesModule } from './types/types.module';
 import { CategoryModule } from './category/category.module';
 import { Type } from './types/type.entity';
+import { Category } from './category/category.entity';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { Type } from './types/type.entity';
       username: 'postgres',
       password: 'senseye3LED',
       database: 'university',
-      entities: [Room, Type],
+      entities: [Room, Type, Category],
       synchronize: true,
     }),
     RoomsModule,
