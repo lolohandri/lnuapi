@@ -1,16 +1,12 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({name: 'Types'})
-export class Type{
+@Entity()
+export class Category{
     @PrimaryGeneratedColumn()
     id: number;
 
     @ApiProperty()
-    @Column({type: 'varchar', length: 100})
+    @Column({type: 'varchar', length: 50})
     name: string;
-
-    @ApiProperty()
-    @Column({type: 'integer'})
-    categoryId: number;
 }

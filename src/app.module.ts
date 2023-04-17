@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
 import { RoomsModule } from './rooms/rooms.module';
 import { Room } from './rooms/room.entity';
 import { TypesModule } from './types/types.module';
+import { CategoryModule } from './category/category.module';
+import { Type } from './types/type.entity';
 
 @Module({
   imports: [
@@ -13,11 +15,12 @@ import { TypesModule } from './types/types.module';
       username: 'postgres',
       password: 'senseye3LED',
       database: 'university',
-      entities: [Room],
+      entities: [Room, Type],
       synchronize: true,
     }),
     RoomsModule,
     TypesModule,
+    CategoryModule,
   ],
 })
 export class AppModule { }

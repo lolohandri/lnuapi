@@ -1,24 +1,28 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity({name: 'Rooms'})
 export class Room{
     @PrimaryGeneratedColumn()
     id: number;
 
     @ApiProperty()
-    @Column()
+    @Column({type: 'varchar', length: 10})
     number: string;
 
     @ApiProperty()
-    @Column()
+    @Column({type: 'integer'})
     capacity: number;
 
     @ApiProperty()
-    @Column()
+    @Column({type: 'integer'})
     level: number;
 
     @ApiProperty()
-    @Column({ default: true })
+    @Column({type: 'varchar', length: 100 })
+    faculty: string;
+        
+    @ApiProperty()
+    @Column({type: 'boolean', default: true })
     isActive: boolean;
 }
