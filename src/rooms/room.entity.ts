@@ -24,7 +24,7 @@ export class Room{
     faculty: string;
         
     @ApiProperty()
-    @Column({type: 'boolean', default: true })
+    @Column({type: 'boolean', default: false })
     isActive: boolean;
 
     @ManyToMany(() => Type, type => type.rooms)
